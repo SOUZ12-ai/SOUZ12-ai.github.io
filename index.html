@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Эрмүүн СӨУЗ - Гурванбулаг ЕБС</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;700;800&family=Noto+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+
+    --blue: #1B3F8F;
+    --blue-deep: #12295E;
+    --gold: #F5B301;
+    --bg: #F6F8FC;
+    --text: #14203A;
+    --muted: #4A5872;
+    --line: #C9D4E8;
+    --tint: #E3ECFA;
+    --link: #1B3F8F;
+    --head: "Rubik", "Noto Sans", system-ui, sans-serif;
+    --body: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0D1630;
+      --text: #E8EEFA;
+      --muted: #A9B7D3;
+      --line: #2A3A66;
+      --tint: #1A2A55;
+      --link: #8DB0FF;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0D1630;
+    --text: #E8EEFA;
+    --muted: #A9B7D3;
+    --line: #2A3A66;
+    --tint: #1A2A55;
+    --link: #8DB0FF;
+  }
+
+  html {
+    background: var(--blue-deep);
+    scroll-padding-top: env(safe-area-inset-top, 0px);
+    scroll-behavior: smooth;
+  }
+  *, *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+  }
+  a { color: var(--link); }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+
+  /* Header */
+  .top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.7rem 1.25rem;
+    background: var(--blue-deep);
+    color: #fff;
+  }
+  .brand {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+    color: #fff;
+    text-decoration: none;
+    flex: none;
+  }
+  .top nav {
+    display: flex;
+    gap: 1.1rem;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    margin-left: auto;
+  }
+  .top nav::-webkit-scrollbar { display: none; }
+  .top nav a {
+    color: #DCE6FA;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.3rem 0;
+  }
+  .top nav a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+
+  /* Hero */
+  .hero {
+    background: var(--blue);
+    color: #fff;
+    padding: 3.5rem 1.25rem 0;
+  }
+  .hero-inner { max-width: 60rem; margin: 0 auto; padding-bottom: 3.5rem; }
+  .hero h1 {
+    font-family: var(--head);
+    font-weight: 800;
+    font-size: clamp(2.2rem, 9vw, 4.75rem);
+    line-height: 1.08;
+    margin: 0 0 1.25rem;
+    max-width: 14em;
+  }
+  .hero p {
+    font-size: 1.15rem;
+    max-width: 34rem;
+    margin: 0 0 2rem;
+    color: #E3ECFA;
+  }
+  .hero .council {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(1.2rem, 4.5vw, 1.75rem);
+    line-height: 1.3;
+    color: #fff;
+    margin: -0.5rem 0 1rem;
+  }
+  .school { font-weight: 600; margin-bottom: 0.75rem !important; color: var(--gold) !important; font-size: 1rem !important; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-block;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 2px solid transparent;
+  }
+  .btn-primary { background: var(--gold); color: #14203A; }
+  .btn-primary:hover { background: #FFC933; }
+  .btn-ghost { border-color: #fff; color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.12); }
+
+  /* Traditional square-spiral ornament band */
+  .hee {
+    height: 14px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='14' viewBox='0 0 20 14'%3E%3Cpath d='M1 13V1H19V13H7V5H13V9' fill='none' stroke='%23F5B301' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-size: 20px 14px;
+    margin: 0 -1.25rem;
+  }
+
+  /* Sections */
+  main { background: var(--bg); }
+  section {
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 3.5rem 1.25rem 0.5rem;
+    scroll-margin-top: 4rem;
+  }
+  section:last-of-type { padding-bottom: 4rem; }
+  h2 {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    line-height: 1.2;
+    margin: 0 0 1.25rem;
+  }
+  h3 { font-family: var(--head); font-weight: 700; font-size: 1.15rem; line-height: 1.3; margin: 0 0 0.25rem; }
+  .lead p { max-width: 42rem; margin: 0 0 1rem; }
+
+  /* Goals */
+  .goals { display: grid; gap: 1.75rem; margin: 2rem 0 0; padding: 0; list-style: none; }
+  .goals li { border-left: 4px solid var(--gold); padding-left: 1rem; max-width: 42rem; }
+  .goals p { margin: 0; color: var(--muted); }
+
+  /* Members */
+  .members {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+    gap: 2rem 1.25rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .sub { margin: 2.75rem 0 1.5rem; font-size: 1.3rem; }
+  .avatar {
+    width: 5.25rem;
+    height: 5.25rem;
+    border-radius: 50%;
+    background: var(--tint);
+    color: var(--blue);
+    display: grid;
+    place-items: center;
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+    overflow: hidden;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .avatar { color: #B9CDFF; }
+  }
+  :root[data-theme="dark"] .avatar { color: #B9CDFF; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .members strong { display: block; font-family: var(--head); font-weight: 700; line-height: 1.3; }
+  .members span.role { color: var(--muted); font-size: 0.95rem; }
+
+  /* Events */
+  .events { margin: 0; padding: 0; list-style: none; max-width: 44rem; }
+  .events li {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 1rem;
+    padding: 1.1rem 0;
+    border-top: 1px solid var(--line);
+  }
+  .events li:last-child { border-bottom: 1px solid var(--line); }
+  .events time { font-family: var(--head); font-weight: 700; color: var(--link); }
+  .events p { margin: 0; color: var(--muted); }
+
+  /* Contact */
+  .contact { display: grid; gap: 0.9rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
+  .contact li { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; }
+  .contact .k { font-weight: 600; color: var(--muted); }
+
+  footer {
+    background: var(--blue-deep);
+    color: #C7D5F2;
+    padding: 1.75rem 1.25rem;
+    font-size: 0.95rem;
+  }
+  footer div { max-width: 60rem; margin: 0 auto; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="#top" aria-label="Эрмүүн СӨУЗ - нүүр хуудас">ЭРМҮҮН СӨУЗ</a>
+  <nav aria-label="Үндсэн цэс">
+    <a href="#tukhai">Бидний тухай</a>
+    <a href="#gishuud">Гишүүд</a>
+    <a href="#uil-aj">Үйл ажиллагаа</a>
+    <a href="#holboo">Холбоо барих</a>
+  </nav>
+</header>
+
+<div class="hero" id="top">
+  <div class="hero-inner">
+    <p class="school">Гурванбулаг ЕБС</p>
+    <h1>Эрмүүн</h1>
+    <p class="council">Сурагчдын өөрийн удирдлагын зөвлөл</p>
+    <p>Сурагчдын санал, санаачилгыг сургуулийн бодит өөрчлөлт болгодог хамт олон.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#holboo">Зөвлөлд нэгдэх</a>
+      <a class="btn btn-ghost" href="#tukhai">Бидний тухай</a>
+    </div>
+  </div>
+  <div class="hee" aria-hidden="true"></div>
+</div>
+
+<main>
+
+  <section id="tukhai" class="lead">
+    <h2>Бидний тухай</h2>
+    <!-- Энэ хэсгийг зөвлөлийнхөө бодит танилцуулгаар солино -->
+    <p>Гурванбулаг ЕБС-ийн «Эрмүүн» Сурагчдын өөрийн удирдлагын зөвлөл нь сурагчдын өөрсдийн сонгосон гишүүдээс бүрддэг байгууллага юм.</p>
+    <p>Бид сурагчдын санал хүсэлтийг сонсож, сургуулийн удирдлагад хүргэн, олон нийтийн арга хэмжээг өөрсдөө зохион байгуулдаг.</p>
+
+    <ul class="goals">
+      <li>
+        <h3>Сурагчдын дуу хоолой</h3>
+        <p>Сурагч бүрийн санал, гомдол, санаачилгыг сонсож, шийдвэрлэхэд нь тусална.</p>
+      </li>
+      <li>
+        <h3>Сургуулийн амьдрал</h3>
+        <p>Спорт, урлаг, сайн дурын ажил, уралдаан тэмцээнийг өөрсдөө санаачилж зохион байгуулна.</p>
+      </li>
+      <li>
+        <h3>Хамтын ажиллагаа</h3>
+        <p>Багш, захиргаа, эцэг эх, бусад сургуулийн зөвлөлүүдтэй хамтран ажиллана.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="gishuud">
+    <h2>Гишүүд</h2>
+    <!--
+      Зураг оруулахдаа <div class="avatar"> доторх үсгийг
+      <img src="images/ner.jpg" alt="Нэр"> гэж солино.
+    -->
+    <ul class="members">
+      <li>
+        <div class="avatar" aria-hidden="true">Б</div>
+        <strong>Батцэцэг</strong>
+        <span class="role">Чиглүүлэгч, нийгмийн ажилтан</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">А</div>
+        <strong>Азжаргал</strong>
+        <span class="role">Тэргүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">А</div>
+        <strong>Алтанзул</strong>
+        <span class="role">Дэд тэргүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">У</div>
+        <strong>Урангоо</strong>
+        <span class="role">Нарийн бичиг</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">М</div>
+        <strong>Маргад</strong>
+        <span class="role">Page editor</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">Б</div>
+        <strong>Батзориг</strong>
+        <span class="role">Website хөгжүүлэгч</span>
+      </li>
+    </ul>
+
+    <h3 class="sub">Зөвлөлийн гишүүд</h3>
+    <ul class="members">
+      <li>
+        <div class="avatar" aria-hidden="true">М</div>
+        <strong>Мөнгөншагай</strong>
+        <span class="role">Гишүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">Б</div>
+        <strong>Билгүүн</strong>
+        <span class="role">Гишүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">А</div>
+        <strong>Амин-Эрдэнэ</strong>
+        <span class="role">Гишүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">О</div>
+        <strong>Одончимэг</strong>
+        <span class="role">Гишүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">Б</div>
+        <strong>Болортуяа</strong>
+        <span class="role">Гишүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">Э</div>
+        <strong>Энүүжинсувд</strong>
+        <span class="role">Гишүүн</span>
+      </li>
+      <li>
+        <div class="avatar" aria-hidden="true">У</div>
+        <strong>Уранчимэг</strong>
+        <span class="role">Гишүүн</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="uil-aj">
+    <h2>Үйл ажиллагаа</h2>
+    <!-- Шинэ арга хэмжээг дээрх <li> блокийг хуулж нэмнэ -->
+    <ul class="events">
+      <li>
+        <time>10-р сарын сүүлээр</time>
+        <div>
+          <h3>Хүүхдээ сонсоё</h3>
+          <p>Сурагчдын санал, бодол, хүсэлтийг сонсох арга хэмжээ.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="holboo" class="lead">
+    <h2>Холбоо барих</h2>
+    <p>Санал, санаачилгаа Facebook хуудсаар бидэнд илгээгээрэй. Зөвлөлд элсэхийг хүсвэл гишүүдтэй шууд холбогдоорой.</p>
+        <ul class="contact">
+      <li><span class="k">Facebook</span><span><a href="https://www.facebook.com/share/1Co2xkCadn/?mibextid=wwXlfr" target="_blank" rel="noopener">Эрмүүн СӨУЗ хуудас</a></span></li>
+      <li><span class="k">Хаяг</span><span>Булган аймаг, Гурванбулаг сум, ЕБС</span></li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <div>© 2026 Эрмүүн СӨУЗ, Гурванбулаг ЕБС</div>
+</footer>
+
+</body>
+</html>
