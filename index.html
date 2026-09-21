@@ -179,6 +179,32 @@
   .goals li { border-left: 4px solid var(--gold); padding-left: 1rem; max-width: 42rem; }
   .goals p { margin: 0; color: var(--muted); }
 
+  /* Recruitment band */
+  .band { background: var(--tint); margin-top: 3.5rem; scroll-margin-top: 4rem; }
+  .band section { padding-top: 3rem; padding-bottom: 3rem !important; }
+  .slogan {
+    font-family: var(--head);
+    font-weight: 700;
+    font-size: clamp(1.25rem, 4.8vw, 1.7rem);
+    line-height: 1.35;
+    margin: 0 0 2rem;
+  }
+  .who { margin: 0 0 2rem; padding: 0; list-style: none; max-width: 40rem; }
+  .who li { position: relative; padding-left: 1.4rem; margin-bottom: 0.6rem; }
+  .who li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 0.6rem;
+    height: 0.6rem;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+  .facts { display: grid; gap: 1.1rem; margin: 1rem 0 0; }
+  .facts dt { font-weight: 600; color: var(--muted); font-size: 0.95rem; }
+  .facts dd { margin: 0.1rem 0 0; }
+
   /* Members */
   .members {
     display: grid;
@@ -246,6 +272,7 @@
   <a class="brand" href="#top" aria-label="Эрмүүн СӨУЗ - нүүр хуудас">ЭРМҮҮН СӨУЗ</a>
   <nav aria-label="Үндсэн цэс">
     <a href="#tukhai">Бидний тухай</a>
+    <a href="#elselt">Элсэлт</a>
     <a href="#gishuud">Гишүүд</a>
     <a href="#uil-aj">Үйл ажиллагаа</a>
     <a href="#holboo">Холбоо барих</a>
@@ -259,7 +286,7 @@
     <p class="council">Сурагчдын өөрийн удирдлагын зөвлөл</p>
     <p>Сурагчдын санал, санаачилгыг сургуулийн бодит өөрчлөлт болгодог хамт олон.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="#holboo">Зөвлөлд нэгдэх</a>
+      <a class="btn btn-primary" href="#elselt">Зөвлөлд нэгдэх</a>
       <a class="btn btn-ghost" href="#tukhai">Бидний тухай</a>
     </div>
   </div>
@@ -289,6 +316,37 @@
       </li>
     </ul>
   </section>
+
+  <div class="band" id="elselt">
+    <section>
+      <h2>Шинэ гишүүдээ урьж байна!</h2>
+      <p class="slogan">Санаагаа хэл.<br>Өөрчлөлтөө эхлүүл.<br>Бидэнтэй хамт бүтээ!</p>
+
+      <h3>Хэн элсэх вэ?</h3>
+      <ul class="who">
+        <li>Шинэ санаа, эрч хүчээр дүүрэн сурагч бүр</li>
+        <li>Идэвхтэй, хариуцлагатай манлайлагч</li>
+        <li>Багаар ажиллах, бие биенээ дэмжих дуртай хүн</li>
+        <li>Сургуулийнхаа орчинд эерэг өөрчлөлт хийхийг хүсдэг хэн бүхэн</li>
+      </ul>
+
+      <h3>Чамайг бид хүлээж байна!</h3>
+      <dl class="facts">
+        <div>
+          <dt>Бүртгэх хугацаа</dt>
+          <dd>9-р сарын 24-өөс 30 хүртэл</dd>
+        </div>
+        <div>
+          <dt>Байршил</dt>
+          <dd>Булган аймаг, Гурванбулаг ЕБС, Хичээлийн 3 дугаар байр (Баам буюу Бор сургууль), Б3 дугаар өрөө</dd>
+        </div>
+        <div>
+          <dt>Холбоо барих</dt>
+          <dd>Instagram: <a href="https://www.instagram.com/youth_lead_student_council" target="_blank" rel="noopener">youth_lead_student_council</a></dd>
+        </div>
+      </dl>
+    </section>
+  </div>
 
   <section id="gishuud">
     <h2>Гишүүд</h2>
